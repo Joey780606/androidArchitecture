@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
         //setContentView(R.layout.activity_main);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
+        GithubViewModelFactory factory = new GithubViewModelFactory(new DataModel());
+        viewModel = new ViewModelProvider(this, factory).get(MainViewModel.class);
         //Above command need implement "implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'"
 
         binding.setViewModel(viewModel);
