@@ -15,5 +15,14 @@ public class ReadMe {
     Step 8: 再更新 MainViewModel.java
     Step 9: 再更新 main_activity.xml
   Reference website: https://ithelp.ithome.com.tw/articles/10192829
+
+  Day 3: Architecture Components - ViewModel
+    1. Lifecycle-aware ViewModel的建立
+    2. 在 MainActivity.java 若需要讓下方這句成功,
+       viewModel = new ViewModelProvider(this).get(MainViewModel.class);
+
+    需要implement
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+  Reference website: https://ithelp.ithome.com.tw/articles/10193118
  */
 }

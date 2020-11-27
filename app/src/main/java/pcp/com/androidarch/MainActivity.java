@@ -2,6 +2,7 @@ package pcp.com.androidarch;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProvider;
 import pcp.com.androidarch.databinding.ActivityMainBinding;
 
 import android.os.Bundle;
@@ -12,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     //private Button btnRefresh;
 
-    private MainViewModel viewModel = new MainViewModel(); // keynote: Attention how to use it.
+    private MainViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,15 +21,9 @@ public class MainActivity extends AppCompatActivity {
         //setContentView(R.layout.activity_main);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        binding.setViewModel(viewModel);
+        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
+        //Above command need implement "implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'"
 
-//        binding.btnRefresh.setOnClickListener(new View.OnClickListener() {
-//        //btnRefresh = findViewById(R.id.btnRefresh);
-//        //btnRefresh.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                viewModel.refresh();
-//            }
-//        });
+        binding.setViewModel(viewModel);
     }
 }
