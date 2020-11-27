@@ -16,6 +16,7 @@ public class ReadMe {
     Step 9: 再更新 main_activity.xml
   Reference website: https://ithelp.ithome.com.tw/articles/10192829
 
+  ===============
   Day 3: Architecture Components - ViewModel
     1. Lifecycle-aware ViewModel的建立
     2. 在 MainActivity.java 若需要讓下方這句成功,
@@ -39,5 +40,21 @@ public class ReadMe {
        因為這樣就違反MVVM原則讓View跟Model接觸
 
   Reference website: https://ithelp.ithome.com.tw/articles/10193118
+
+  ===============
+  Class 4 Architecture Components - LiveData - 1
+   1. viewModel.mData.addOnPropertyChangedCallback
+     功能: 當功能有改變(完成時)的Callback
+
+   2. LiveData:
+     a. LiveData最強大的地方在於lifecycle-aware特性，當LiveData的value發生改變
+       時，若View在前景便會直接發送，而View在背景的話，value將會被保留(hold)住，直到回到前景時才發送。
+       此外，當View被destroy時，LiveData也會自動停止observe行為，避免造成memory-leak。
+
+     b. MutableLiveData是方便我們使用的LiveData子類別，提供setValue()和postValue()兩種方式更新
+       value，差異在於前者是在main thread執行，若需要在background thread則改用後者。
+
+     3. 實作 LiveData 例子,到介紹 SingleLiveEvent 前面
+       Reference website: https://ithelp.ithome.com.tw/articles/10193296
  */
 }
