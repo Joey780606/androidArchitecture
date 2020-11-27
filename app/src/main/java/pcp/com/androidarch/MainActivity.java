@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider;
 import pcp.com.androidarch.databinding.ActivityMainBinding;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,7 +39,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable String data) {
                 binding.txtHelloWord.setText(data);
-                Toast.makeText(MainActivity.this, "下載完成", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "下載完成", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        viewModel.toastText.observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String text) {
+                Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();
             }
         });
     }

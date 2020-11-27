@@ -2,6 +2,7 @@ package pcp.com.androidarch;
 
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableBoolean;
@@ -14,6 +15,8 @@ public class MainViewModel extends ViewModel {
     public final ObservableBoolean isLoading = new ObservableBoolean(false);
 
     public final MutableLiveData<String> mData = new MutableLiveData<>();
+
+    public final SingleLiveEvent<String> toastText = new SingleLiveEvent<>();
 
     private DataModel dataModel = new DataModel();
     public MainViewModel(DataModel dataModel) {
@@ -28,6 +31,7 @@ public class MainViewModel extends ViewModel {
             @Override
             public void onDataReady(String data) {
                 mData.setValue(data);
+                toastText.setValue("下載完成");
                 isLoading.set(false);
             }
         });
